@@ -20,9 +20,10 @@ const Header = (props) => {
       justify="space-between"
       wrap="wrap"
       padding="1.5rem"
-      bg="gray.700"
-      color="white"
+      bg="gray.50"
+      color="gray"
       mb={8}
+      boxShadow="0 0px 4px 0px rgba(0, 0, 0, 0.4)"
       {...props}
     >
       <Flex align="center" mr={5}>
