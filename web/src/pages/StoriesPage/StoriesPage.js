@@ -1,11 +1,12 @@
 import AppLayout from 'src/layouts/AppLayout'
-import { Heading, Stack } from '@chakra-ui/core'
+import { Heading } from '@chakra-ui/core'
+import StoriesCell from 'src/components/StoriesCell'
 
 const StoriesPage = () => {
   return (
     <AppLayout>
       <Heading>Stories</Heading>
-      <Stack alignItems="center" spacing={8}></Stack>
+      <StoriesCell />
     </AppLayout>
   )
 }
