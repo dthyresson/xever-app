@@ -16,15 +16,17 @@ import moment from 'moment'
 export const QUERY = gql`
   query {
     stories {
+      author
       channelEmojiIcon
       channelName
       feedlyId
       imageUrl
-      url
+      publishedAt
+      site
       summarySentences
       title
-      publishedAt
       topicLabels
+      url
     }
   }
 `
@@ -74,8 +76,20 @@ const renderStories = ({ stories }) => {
           objectFit="cover"
           fallbackSrc="https://via.placeholder.com/120"
           rounded="lg"
-          mb={4}
+          mb={2}
         />
+        <Flex justify="space-between" mb={2}>
+          <Flex align="left">
+            <Text fontSize="xs" color="gray.400">
+              {story.author}
+            </Text>
+          </Flex>
+          <Flex align="right">
+            <Text fontSize="xs" color="gray.400">
+              {story.site}
+            </Text>
+          </Flex>
+        </Flex>
         <Heading as="h3" size="lg" fontWeight="bold" mb={8}>
           <Link href={story.url} isExternal>
             {story.title}

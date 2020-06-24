@@ -19,11 +19,11 @@ const Header = (props) => {
       align="center"
       justify="space-between"
       wrap="wrap"
-      padding="1.5rem"
-      bg="gray.50"
+      padding="1rem"
+      bg="white"
       color="gray"
-      mb={8}
-      boxShadow="0 0px 4px 0px rgba(0, 0, 0, 0.4)"
+      boxShadow="0 0px 1px 0px rgba(0, 0, 0, 0.4)"
+      mb={4}
       {...props}
     >
       <Flex align="center" mr={5}>
@@ -34,7 +34,7 @@ const Header = (props) => {
 
       <Box display={{ sm: 'block', md: 'none' }} onClick={handleToggle}>
         <svg
-          fill="white"
+          fill="black"
           width="12px"
           viewBox="0 0 20 20"
           xmlns="http://www.w3.org/2000/svg"
@@ -71,9 +71,11 @@ const AppLayout = ({ children }) => {
   return (
     <>
       <Header />
-      <Flash timeout={5000} />
-      <Box ml={4} mr={4}>
-        {children}
+      <Box>
+        <Flash timeout={5000} />
+        <Box ml={4} mr={4}>
+          {children}
+        </Box>
       </Box>
     </>
   )
