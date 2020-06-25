@@ -73,7 +73,7 @@ const AppLayout = ({ children }) => {
       <Header />
       <Box>
         <Flash timeout={5000} />
-        <Box ml={4} mr={4}>
+        <Box ml={4} mr={4} mb={4}>
           {children}
         </Box>
       </Box>
