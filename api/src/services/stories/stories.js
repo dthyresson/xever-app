@@ -42,8 +42,8 @@ export const stories = async () => {
       method: 'post',
       body: JSON.stringify({ query }),
       headers: {
-        // 'Content-Type': 'application/json',
-        'x-hasura-admin-secret': 's3cr3t',
+        'Content-Type': 'application/json',
+        'x-hasura-admin-secret': process.env.HASURA_KEY,
       },
     }
   )

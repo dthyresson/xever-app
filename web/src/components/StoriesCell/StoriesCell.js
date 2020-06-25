@@ -30,7 +30,6 @@ export const QUERY = gql`
     }
   }
 `
-
 export const Loading = () => <div>Loading...</div>
 
 export const Empty = () => <div>Empty</div>
@@ -94,6 +93,9 @@ const renderStories = ({ stories }) => {
           <Link href={story.url} isExternal>
             {story.title}
           </Link>
+        </Heading>
+        <Heading as="h4" color="gray.700" size="xs" mb={2}>
+          Highlights
         </Heading>
         {story.summarySentences &&
           story.summarySentences.length > 0 &&
