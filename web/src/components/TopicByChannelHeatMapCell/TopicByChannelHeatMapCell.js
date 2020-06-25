@@ -33,8 +33,10 @@ export const Success = ({ heatMap }) => {
     return item != indexBy
   })
 
+  const height = totals.length * 4
+
   return (
-    <Box height="3000px" width="100%" bg="white">
+    <Box height={`${height}rem`} width="100%">
       <ResponsiveHeatMapCanvas
         data={data}
         keys={keys.sort()}
