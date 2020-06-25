@@ -33,7 +33,7 @@ const Stories = ({ stories }) => {
 export const Success = ({ stories }) => {
   return (
     <Stack spacing={8} alignItems="center">
-      <Stories stories={stories} />>
+      <Stories stories={stories} />
     </Stack>
   )
 }
