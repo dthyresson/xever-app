@@ -1,4 +1,4 @@
-import fetch from 'node-fetch'
+import { queryEndpoint } from 'src/lib/hasuraClient'
 
 export const stories = async () => {
   const query = `
@@ -35,20 +35,7 @@ export const stories = async () => {
     }
   }
  `
+  const data = await queryEndpoint(query, process.env.HASURA_DOMAIN)
 
-  const response = await fetch(
-    'https://xrinlearning-graphql.herokuapp.com/v1/graphql',
-    {
-      method: 'post',
-      body: JSON.stringify({ query }),
-      headers: {
-        'Content-Type': 'application/json',
-        'x-hasura-admin-secret': process.env.HASURA_KEY,
-      },
-    }
-  )
-
-  const json = await response.json()
-
-  return json['data']['stories']
+  return data['stories']
 }
