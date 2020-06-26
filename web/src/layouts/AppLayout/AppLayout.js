@@ -2,6 +2,7 @@ import { Box, Heading, Flex, Text } from '@chakra-ui/core'
 // import { useAuth } from '@redwoodjs/auth'
 import { Link, routes } from '@redwoodjs/router'
 import { Flash } from '@redwoodjs/web'
+import UserAuthTools from 'src/components/UserAuthTools'
 
 const MenuItems = ({ children }) => (
   <Text mt={{ base: 4, md: 0 }} mr={6} display="block">
@@ -56,6 +57,9 @@ const Header = (props) => {
 
         <MenuItems>
           <Link to={routes.dashboard()}>Dashboard</Link>
+        </MenuItems>
+        <MenuItems>
+          <UserAuthTools></UserAuthTools>
         </MenuItems>
       </Box>
 

@@ -18,15 +18,17 @@ export const schema = gql`
 
   type Query {
     users: [User!]!
+    user(id: Int!): User!
+    userByUserId(userId: String!): User!
   }
 
   input CreateUserInput {
-    updatedAt: DateTime!
+    updatedAt: DateTime
     email: String!
     emailVerified: Boolean
     lastIp: String
-    lastLogin: DateTime!
-    loginsCount: Int!
+    lastLogin: DateTime
+    loginsCount: Int
     name: String!
     nickname: String!
     picture: String!
