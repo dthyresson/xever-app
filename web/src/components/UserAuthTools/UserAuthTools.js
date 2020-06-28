@@ -10,7 +10,13 @@ const UserAuthTools = () => {
   }
 
   return (
-    <Button onClick={isAuthenticated ? logOut : logIn}>
+    <Button
+      onClick={
+        isAuthenticated
+          ? logOut({ returnTo: process.env.AUTH0_REDIRECT_URI })
+          : logIn
+      }
+    >
       {isAuthenticated ? 'Log out' : 'Log in'}
     </Button>
   )

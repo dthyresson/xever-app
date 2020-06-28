@@ -17,11 +17,6 @@ export const Empty = () => <div>Empty</div>
 export const Failure = ({ error }) => <div>Error: {error.message}</div>
 
 export const Success = ({ dailyStoryCounts }) => {
-  console.log(' >> in Success (calendar)')
-
-  console.log(process.env.AUTH0_DOMAIN)
-  console.log(process.env.AUTH0_CLIENT_ID)
-
   const firstDay = dailyStoryCounts[0].day
   const lastDay = dailyStoryCounts[dailyStoryCounts.length - 1].day
 
