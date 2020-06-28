@@ -1,4 +1,4 @@
-import { queryEndpoint } from 'src/lib/hasuraClient'
+import { request } from 'src/lib/hasuraClient'
 
 export const channelByTopicTotals = async () => {
   const query = `
@@ -8,7 +8,7 @@ export const channelByTopicTotals = async () => {
     }
   }
  `
-  const data = await queryEndpoint(query, process.env.HASURA_DOMAIN)
+  const data = await request(query, process.env.HASURA_DOMAIN)
 
   return data['channelByTopicTotals']
 }

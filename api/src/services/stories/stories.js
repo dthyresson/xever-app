@@ -1,5 +1,5 @@
 import { requireAuth } from 'src/lib/auth.js'
-import { queryEndpoint } from 'src/lib/hasuraClient'
+import { request } from 'src/lib/hasuraClient'
 
 export const stories = async () => {
   requireAuth()
@@ -38,7 +38,7 @@ export const stories = async () => {
     }
   }
  `
-  const data = await queryEndpoint(query, process.env.HASURA_DOMAIN)
+  const data = await request(query, process.env.HASURA_DOMAIN)
 
   return data['stories']
 }
