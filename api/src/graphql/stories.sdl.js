@@ -33,6 +33,6 @@ export const schema = gql`
   }
 
   type Query {
-    stories: [Story!]!
+    stories: [Story!]
   }
 `
