@@ -11,11 +11,13 @@ const UserAuthTools = () => {
 
   return (
     <Button
-      onClick={
-        isAuthenticated
-          ? logOut({ returnTo: process.env.AUTH0_REDIRECT_URI })
-          : logIn
-      }
+      onClick={async () => {
+        if (isAuthenticated) {
+          await logOut({ returnTo: process.env.AUTH0_REDIRECT_URI })
+        } else {
+          await logIn()
+        }
+      }}
     >
       {isAuthenticated ? 'Log out' : 'Log in'}
     </Button>
