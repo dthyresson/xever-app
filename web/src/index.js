@@ -10,11 +10,11 @@ import Routes from 'src/Routes'
 import './index.css'
 
 const auth0 = new Auth0Client({
-  domain: `${process.env.AUTH0_DOMAIN}`,
-  client_id: `${process.env.AUTH0_CLIENT_ID}`,
-  redirect_uri: `${process.env.AUTH0_REDIRECT_URI}`,
+  domain: process.env.AUTH0_DOMAIN,
+  client_id: process.env.AUTH0_CLIENT_ID,
+  redirect_uri: process.env.AUTH0_REDIRECT_URI,
   cacheLocation: 'localstorage',
-  audience: `${process.env.AUTH0_AUDIENCE}`,
+  audience: process.env.AUTH0_AUDIENCE,
 })
 
 ReactDOM.render(
