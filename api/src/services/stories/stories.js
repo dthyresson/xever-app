@@ -1,8 +1,8 @@
-import { requireAuth } from 'src/lib/auth.js'
+// import { requireAuth } from 'src/lib/auth.js'
 import { request } from 'src/lib/hasuraClient'
 
 export const stories = async () => {
-  requireAuth()
+  // requireAuth()
 
   const query = `
   {
