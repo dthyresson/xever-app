@@ -4,11 +4,76 @@
 //   export const getCurrentUser = async ({ email }) => {
 //     return await db.user.findOne({ where: { email } })
 //   }
-
+import { AuthenticationClient } from 'auth0'
 import { AuthenticationError } from '@redwoodjs/api'
 
-export const getCurrentUser = async (jwt) => {
-  return jwt
+import { db } from 'src/lib/db'
+
+const auth0 = new AuthenticationClient({
+  domain: process.env.AUTH0_DOMAIN,
+  clientId: process.env.AUTH0_CLIENT_ID,
+})
+
+export const getCurrentUser = async (jwt, accessToken) => {
+  console.log('>> getCurrentUser')
+  console.log(jwt)
+
+  if (!jwt?.sub) {
+    return jwt
+  }
+
+  console.log(`>> calling findOne with ${jwt.sub}`)
+
+  try {
+    const user = await db.user.findOne({
+      where: {
+        userId: jwt.sub,
+      },
+    })
+
+    console.log('>> got User')
+    console.log(user)
+
+    if (!user && accessToken) {
+      console.log('>> fetching getProfile')
+      const auth0User = await auth0.getProfile(accessToken)
+
+      console.log(auth0User)
+
+      console.log('>> creating user with ...')
+
+      const userData = {
+        // createdAt: auth0User.createdAt,
+        // updatedAt: auth0User.updatedAt,
+        email: auth0User.email,
+        emailVerified: auth0User.emailVerified,
+        lastIp: auth0User.lastIp,
+        lastLogin: auth0User.lastLogin,
+        loginsCount: auth0User.loginsCount,
+        name: auth0User.name,
+        nickname: auth0User.nickname,
+        picture: auth0User.picture,
+        userId: auth0User.sub,
+      }
+
+      console.log(userData)
+
+      const newUser = await db.user.create({
+        data: userData,
+      })
+
+      console.log('returning newly created user')
+      console.log(newUser)
+
+      return newUser
+    }
+
+    console.log('>> returning found db user as currentUser')
+    return user
+  } catch (error) {
+    console.log(error)
+    return jwt
+  }
 }
 
 // Use this function in your services to check that a user is logged in, and

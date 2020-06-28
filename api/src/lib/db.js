@@ -3,4 +3,20 @@
 
 import { PrismaClient } from '@prisma/client'
 
-export const db = new PrismaClient()
+export const db = new PrismaClient({
+  log: [
+    {
+      emit: 'event',
+      level: 'query',
+    },
+  ],
+})
+
+db.on('query', (e) => {
+  e.timestamp
+  e.query
+  e.params
+  e.duration
+  e.target
+  console.log(e)
+})

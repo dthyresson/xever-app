@@ -58,6 +58,11 @@ const Header = (props) => {
         <MenuItems>
           <Link to={routes.dashboard()}>Dashboard</Link>
         </MenuItems>
+
+        <MenuItems>
+          <Link to={routes.secret()}>Secret</Link>
+        </MenuItems>
+
         <MenuItems>
           <UserAuthTools></UserAuthTools>
         </MenuItems>
