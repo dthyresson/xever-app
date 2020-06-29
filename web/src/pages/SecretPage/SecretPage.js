@@ -10,7 +10,7 @@ const SecretPage = () => {
       <Box>
         <Heading>Secret Page</Heading>
 
-        {isAuthenticated && (
+        {isAuthenticated && currentUser && (
           <Box>
             <Text>You need to be logged in to see your profile:</Text>
             <Text>{currentUser.email}</Text>
